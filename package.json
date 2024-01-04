@@ -13,6 +13,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "gray-matter": "^4.0.3",
     "next": "14.0.4",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",

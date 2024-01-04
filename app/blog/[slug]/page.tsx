@@ -44,20 +44,19 @@
 
 import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import "@/styles/mdx.css";
 import { Mdx } from "@/components/mdx";
+import path from "path";
 
 export default async function PostPage({ params }) {
   const filename = "./content/" + params.slug + ".mdx";
   const file = await readFile(filename, "utf8");
-  let postComponents = {};
 
   const { content, data } = matter(file);
 
   return (
-    <article>
+    <div>
       <h1
         className={[
           "text-[40px] font-black leading-[44px] text-[--title]",
@@ -91,12 +90,13 @@ export default async function PostPage({ params }) {
         />
         <hr />
       </div>
-    </article>
+    </div>
   );
 }
 
 export async function generateStaticParams() {
   const entries = await readdir("./content/", { withFileTypes: true });
-  const dirs = entries.map((entry) => entry.name);
+  const dirs = entries.map((entry) => path.basename(entry.name, ".mdx"));
+  console.log(dirs.map((dir) => ({ slug: dir })));
   return dirs.map((dir) => ({ slug: dir }));
 }
