@@ -2,7 +2,9 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
-import rehypePrettyCode from "rehype-pretty-code";
+import { Button } from "./ui/button";
+import { Suspense } from "react";
+import { CopyButton } from "./copy-button";
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -137,10 +139,29 @@ const components = {
     __withMeta__?: boolean;
     __src__?: string;
   }) => {
-    return <pre className={cn(className)} {...props} />;
+    return (
+      <div className="mb-12 mt-2">
+        <pre
+          className={cn(
+            "mb-4 mt-2 max-h-[650px] overflow-x-auto rounded-2xl dark:!bg-zinc-900 border-zinc-700 border py-4",
+            className
+          )}
+          {...props}
+        />
+        <Suspense fallback={<div>siema andrzej</div>}>
+          <CopyButton />
+        </Suspense>
+      </div>
+    );
   },
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <code className={cn(className)} {...props} />
+    <code
+      className={cn(
+        "relative rounded px-6 py-[0.2rem] font-mono text-sm",
+        className
+      )}
+      {...props}
+    />
   ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
