@@ -1,10 +1,10 @@
 ---
-title: "2023 Blog Refresh"
+title: "Bartek Ty Mały Kurwiu, Kiedy 80kg Na OHP?"
 publishedAt: "2023-11-11"
 summary: "Including some of my latest hot takes (okay they are pretty mild)."
 ---
 
-I updated my blog this weekend and wanted to share some thoughts along the way:
+Aliquam vel urna posuere, laoreet massa ac, gravida ligula:
 
 - [Content Management](#content-management)
 - [Performance](#performance)
@@ -12,26 +12,26 @@ I updated my blog this weekend and wanted to share some thoughts along the way:
 
 <Callout emoji="⚠️" type="warning">
 
-**Disclaimer:** My site is my “breakable toy”. I enjoy and _intentionally_ change technology and try new patterns here. I'd encourage you to do the same and then write about why you made those choices.
+**Disclaimer:** Hello from the Callout.
 
 </Callout>
 
 ## Content Management
 
-I've moved my content from HTML to vanilla Markdown, to MDX, to a CMS, and back to MDX over the years. My content requirements as of now are:
+Vivamus hendrerit risus at ligula imperdiet, ut condimentum est feugiat.
 
-1. Written in Markdown¹
-2. Support for syntax highlighting, embedded tweets, and other components
-3. Managed through version control²
-4. Minimal external dependencies
+1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+2. Sed aliquam mi ut vehicula vulputate.
+3. Nulla vitae lectus sed mauris porta iaculis.
+4. Aenean convallis dolor et posuere dictum.
 
-My goal was to simplify without giving up too many features.
+In egestas nulla at ante euismod, nec ultricies massa ornare.
 
-### Retrieving Content
+### Nec Ultricies
 
-You can go surprisingly far with just Node.js and JavaScript. You'll notice a theme start to emerge in this blog post: fewer dependencies, and more copy/paste-able code.
+Vivamus hendrerit risus at ligula imperdiet, ut condimentum est feugiat.
 
-I removed the following libraries:
+Donec euismod lorem non dictum efficitur:
 
 - `contentlayer`
 - `next-contentlayer`
@@ -41,7 +41,7 @@ I removed the following libraries:
 - `remark-gfm`
 - `shiki`
 
-I was still able to maintain almost all of my content requirements with not much code. For example, here's how I'm able to retrieve all of my blog posts:
+Vivamus hendrerit risus at ligula imperdiet, ut condimentum est feugiat.
 
 ```js
 import fs from "fs";
@@ -74,11 +74,11 @@ export function getBlogPosts() {
 }
 ```
 
-That's not too bad. So what am I missing? Well, Contentlayer gives you Fast Refresh for your content. That's nice. You can [workaround this](https://github.com/gaearon/overreacted.io/pull/797) or just use `@next/mdx`, which I might do. Contentlayer has other features, too, but they're unnecessary for my blog.
+Nullam tincidunt arcu quam, sit amet efficitur odio maximus ut. Donec imperdiet ut ante sed bibendum. Pellentesque viverra efficitur dapibus. Pellentesque fermentum, sapien quis mattis accumsan, nunc felis placerat urna, a consequat nunc augue in eros. Donec quis egestas tortor. Aliquam scelerisque vel diam in vulputate. Duis lacinia sapien eget lorem malesuada, a tincidunt enim lobortis. Proin dictum accumsan congue. Nam ex diam, ultrices id nibh non, volutpat venenatis arcu. Aenean ac massa tellus.
 
-### Remark and Rehype
+### Proin Ultiricies
 
-What about the AST modifications for auto-linking headings, adding IDs, and supporting syntax highlighting? I don't know why I didn't think of this before, but you can just… use React components.
+Sed in lobortis felis, ac maximus nisi. Nam porta auctor accumsan.
 
 ```jsx
 import { highlight } from "sugar-high"; // 1KB new dependency
@@ -252,14 +252,4 @@ There's an assortment of other opinions I've included here now:
 
 ## Conclusion
 
-As always, my entire site is [open source](https://github.com/leerob/leerob.io). Feel free to fork it and hack around.
-
-I've also simplified the cloning process by consolidating everything to a single [Postgres database](https://vercel.com/postgres). It's now where blog views, guestbook entries, and redirects are stored. I still like MySQL, just wanted an excuse to use Vercel Postgres more.
-
-See you next year for the 2024 blog refresh 🫡
-
----
-
-¹: Even when I moved to a CMS, I was still writing in MDX. For my developer blog, it's by far the easiest for me to maintain. I've gone the opposite route with custom components backed by a CMS on larger projects, but has always felt unnecessary here.
-
-²: Surprisingly, there still aren't many great git-like workflows for content that I've enjoyed using. Again, for my blog, having the complete version history tracked in git has been very helpful.
+May the big calves be with you 🫡
