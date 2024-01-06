@@ -6,7 +6,6 @@ import "@/styles//globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { GeistSans } from "geist/font/sans";
 
 const onest = Familjen_Grotesk({
   subsets: ["latin"],
