@@ -19,9 +19,6 @@ export async function getPosts() {
     const { data } = matter(fileContent);
     return { slug, ...data };
   });
-  posts.sort((a, b) => {
-    return Date.parse(a.publishedAt) < Date.parse(b.publishedAt) ? 1 : -1;
-  });
   return posts;
 }
 
@@ -47,11 +44,6 @@ export default async function Home() {
 }
 
 function PostTitle({ post }) {
-  let today = new Date();
-  let timeSinceFirstPost = (today - new Date(2018, 10, 30)).valueOf();
-  let timeSinceThisPost = (today - new Date(post.publishedAt)).valueOf();
-  let staleness = timeSinceThisPost / timeSinceFirstPost;
-
   return (
     <h2 className={["text-3xl font-black font-heading"].join(" ")}>
       {post.title}
