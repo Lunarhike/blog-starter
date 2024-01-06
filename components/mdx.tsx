@@ -58,14 +58,17 @@ const components = {
   ),
   pre: ({ className, ...props }) => (
     <pre
-      className={cn(" [&>code]:!bg-zinc-900 !bg-zinc-900", className)}
+      className={cn(
+        " [&>code]:!bg-black border border-zinc-800 !bg-black text-xs sm:text-sm",
+        className
+      )}
       {...props}
     />
   ),
   code: ({ className, ...props }) => (
     <code
       className={cn(
-        "relative rounded !bg-zinc-800 px-[0.3rem] py-[0.2rem] font-code [&>span]:pr-4 font-medium",
+        "relative rounded !bg-zinc-800 px-[0.3rem] py-[0.2rem] font-code [&>span]:pr-4",
         className
       )}
       {...props}

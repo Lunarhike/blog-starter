@@ -44,7 +44,7 @@ export default async function PostPage({ params }) {
   const authorsInfo = await getAuthorDetails(data.authors);
 
   return (
-    <main className="container py-4 lg:py-8 max-w-[720px]">
+    <main className="container py-6 lg:py-8 max-w-[650px]">
       <div className="max-w-3xl">
         {data.publishedAt && (
           <time
@@ -54,7 +54,7 @@ export default async function PostPage({ params }) {
             Published on {formatDate(data.publishedAt)}
           </time>
         )}
-        <h1 className="mt-2 font-cal font-extrabold inline-block text-4xl leading-tight lg:text-5xl">
+        <h1 className="mt-2 font-heading font-bold inline-block text-4xl leading-tight tracking-tight lg:text-5xl ">
           {data.title}
         </h1>
         {authorsInfo.length ? (
@@ -62,11 +62,12 @@ export default async function PostPage({ params }) {
             {authorsInfo.map((author) =>
               author ? (
                 <Link
-                  key={author._id}
+                  key={author.name}
                   href={`https://www.linkedin.com/in/${author.linkedIn}`}
                   className="flex items-center space-x-2 text-sm"
                 >
                   <Image
+                    placeholder="blur"
                     src={author.avatar}
                     alt={author.name}
                     width={42}
@@ -105,7 +106,7 @@ export default async function PostPage({ params }) {
                 [
                   rehypePrettyCode,
                   {
-                    theme: "github-dark",
+                    theme: "github-dark-dimmed",
                   },
                 ],
               ],
