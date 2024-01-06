@@ -57,7 +57,7 @@ export default async function PostPage({ params }) {
         <h1 className="mt-2 font-heading font-bold inline-block text-4xl leading-tight tracking-tight lg:text-5xl ">
           {data.title}
         </h1>
-        {authorsInfo.length ? (
+        {authorsInfo && (
           <div className="mt-4 flex space-x-4">
             {authorsInfo.map((author) =>
               author ? (
@@ -84,7 +84,7 @@ export default async function PostPage({ params }) {
               ) : null
             )}
           </div>
-        ) : null}
+        )}
       </div>
       {data.image && (
         <Image
