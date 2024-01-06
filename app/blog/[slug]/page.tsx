@@ -7,6 +7,7 @@ import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
+import { Suspense } from "react";
 
 async function getAuthorDetails(authorsList) {
   // If authorsList is empty or not provided, return an empty array
@@ -47,41 +48,43 @@ export default async function PostPage({ params }) {
 
   return (
     <main className="container py-6 lg:py-8 max-w-[650px]">
-      <div className="max-w-3xl">
-        {data.publishedAt && (
-          <time
-            dateTime={data.publishedAt}
-            className="block text-sm text-muted-foreground"
-          >
-            Published on {formatDate(data.publishedAt)}
-          </time>
-        )}
-        <h1 className="mt-2 font-heading font-bold inline-block text-4xl leading-tight tracking-tight lg:text-5xl ">
-          {data.title}
-        </h1>
-        <div className="mt-4 flex space-x-4">
-          {authorsInfo.map((author) => (
-            <Link
-              key={author.name}
-              href={`https://www.linkedin.com/in/${author.linkedIn}`}
-              className="flex items-center space-x-2 text-sm"
+      <Suspense fallback={<p className="h-5"></p>}>
+        <div className="max-w-3xl">
+          {data.publishedAt && (
+            <time
+              dateTime={data.publishedAt}
+              className="block text-sm text-muted-foreground"
             >
-              <Image
-                loading="lazy"
-                src={author.avatar}
-                alt={author.name}
-                width={42}
-                height={42}
-                className="rounded-full"
-              />
-              <div className="flex-1 text-left leading-tight">
-                <p className="font-medium">{author.name}</p>
-                <p className="text-[12px] text-muted-foreground">@LinkedIn</p>
-              </div>
-            </Link>
-          ))}
+              Published on {formatDate(data.publishedAt)}
+            </time>
+          )}
+          <h1 className="mt-2 font-heading font-bold inline-block text-4xl leading-tight tracking-tight lg:text-5xl ">
+            {data.title}
+          </h1>
+          <div className="mt-4 flex space-x-4">
+            {authorsInfo.map((author) => (
+              <Link
+                key={author.name}
+                href={`https://www.linkedin.com/in/${author.linkedIn}`}
+                className="flex items-center space-x-2 text-sm"
+              >
+                <Image
+                  loading="lazy"
+                  src={author.avatar}
+                  alt={author.name}
+                  width={42}
+                  height={42}
+                  className="rounded-full"
+                />
+                <div className="flex-1 text-left leading-tight">
+                  <p className="font-medium">{author.name}</p>
+                  <p className="text-[12px] text-muted-foreground">@LinkedIn</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      </Suspense>
       {data.image && (
         <Image
           src={data.image}
@@ -94,22 +97,24 @@ export default async function PostPage({ params }) {
         />
       )}
       <div className="prose prose-quoteless prose-neutral dark:prose-invert py-8">
-        <Mdx
-          source={content}
-          options={{
-            mdxOptions: {
-              useDynamicImport: true,
-              rehypePlugins: [
-                [
-                  rehypePrettyCode,
-                  {
-                    theme: "github-dark-dimmed",
-                  },
+        <Suspense fallback={<p className="h-5"></p>}>
+          <Mdx
+            source={content}
+            options={{
+              mdxOptions: {
+                useDynamicImport: true,
+                rehypePlugins: [
+                  [
+                    rehypePrettyCode,
+                    {
+                      theme: "github-dark-dimmed",
+                    },
+                  ],
                 ],
-              ],
-            },
-          }}
-        />
+              },
+            }}
+          />
+        </Suspense>
         <hr />
       </div>
     </main>
