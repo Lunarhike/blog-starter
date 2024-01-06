@@ -15,7 +15,7 @@ export default async function PostPage({ params }) {
     <main className="container py-4 lg:py-8 max-w-[650px]">
       <div className="flex flex-col">
         <h1 className="title font-medium text-5xl tracking-tight text-left font-heading">
-          Hello Boi. <br /> Welcome to Tekken 3 baby.
+          {data.title}
         </h1>
         <p className="mt-2 text-[13px] text-gray-700 dark:text-gray-300">
           {new Date(data.publishedAt).toLocaleDateString("en", {
