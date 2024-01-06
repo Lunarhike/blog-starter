@@ -9,10 +9,10 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const entries = await readdir("./content/", { withFileTypes: true });
+  const entries = await readdir("./content/blog/", { withFileTypes: true });
   const dirs = entries.map((entry) => path.basename(entry.name, ".mdx"));
   const fileContents = await Promise.all(
-    dirs.map((dir) => readFile("./content/" + dir + ".mdx", "utf8"))
+    dirs.map((dir) => readFile("./content/blog/" + dir + ".mdx", "utf8"))
   );
   const posts = dirs.map((slug, i) => {
     const fileContent = fileContents[i];

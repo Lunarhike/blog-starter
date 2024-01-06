@@ -17,42 +17,7 @@ const components = {
   h4: ({ className, ...props }) => (
     <h4 className={cn("font-heading", className)} {...props} />
   ),
-  h5: ({ className, ...props }) => (
-    <h5 className={cn("font-heading", className)} {...props} />
-  ),
-  h6: ({ className, ...props }) => (
-    <h6 className={cn("font-heading", className)} {...props} />
-  ),
-  a: ({ className, ...props }) => (
-    <a
-      className={cn(
-        "font-medium underline underline-offset-4 decoration-zinc-500",
-        className
-      )}
-      {...props}
-    />
-  ),
-  p: ({ className, ...props }) => (
-    <p className={cn("", className)} {...props} />
-  ),
-  ul: ({ className, ...props }) => (
-    <ul className={cn("", className)} {...props} />
-  ),
-  ol: ({ className, ...props }) => (
-    <ol className={cn("", className)} {...props} />
-  ),
-  li: ({ className, ...props }) => (
-    <li className={cn("mt-2 [&>*]:mt-6", className)} {...props} />
-  ),
-  blockquote: ({ className, ...props }) => (
-    <blockquote
-      className={cn(
-        "mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground",
-        className
-      )}
-      {...props}
-    />
-  ),
+
   img: ({
     className,
     alt,
