@@ -10,6 +10,8 @@ import { TailwindIndicator } from "@/components/tailwind-indicator";
 const onest = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-heading",
+  display: "swap",
+  adjustFontFallback: false,
 });
 const inter = Inter({
   subsets: ["latin"],

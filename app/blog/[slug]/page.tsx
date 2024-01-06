@@ -7,6 +7,7 @@ import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
+import { getPlaiceholder } from "plaiceholder";
 
 async function getAuthorDetails(authorsList) {
   // If authorsList is empty or not provided, return an empty array
@@ -44,6 +45,9 @@ export default async function PostPage({ params }) {
   const file = await readFile(filename, "utf8");
   const { content, data } = matter(file);
   const authorsInfo = await getAuthorDetails(data.authors);
+  const src = data?.image;
+  const buffer = await readFile(`./public${src}`);
+  const { base64 } = await getPlaiceholder(buffer);
 
   return (
     <main className="container py-6 lg:py-8 max-w-[650px]">
@@ -70,6 +74,8 @@ export default async function PostPage({ params }) {
                 loading="lazy"
                 src={author.avatar}
                 alt={author.name}
+                placeholder="blur"
+                blurDataURL={base64}
                 width={42}
                 height={42}
                 className="rounded-full"
@@ -87,7 +93,7 @@ export default async function PostPage({ params }) {
           src={data.image}
           alt={data.title}
           width={650}
-          height={405}
+          height={650}
           className="my-8 rounded-md border bg-zinc-500 transition-colors"
           priority
         />
