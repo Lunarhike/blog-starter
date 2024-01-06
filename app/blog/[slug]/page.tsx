@@ -12,13 +12,9 @@ export default async function PostPage({ params }) {
   const { content, data } = matter(file);
 
   return (
-    <main className="relative py-6 lg:py-12 lg:gap-10 xl:grid">
+    <main className="mx-auto relative py-6 lg:py-12 lg:gap-10 xl:grid max-w-3xl">
       <div className="mx-auto w-full min-w-0">
-        <h1
-          className={[
-            "text-[40px] font-black leading-[44px] text-[--title]",
-          ].join(" ")}
-        >
+        <h1 className="title font-semibold text-3xl tracking-tighter max-w-[650px]">
           {data.title}
         </h1>
         <p className="mt-2 text-[13px] text-gray-700 dark:text-gray-300">
@@ -38,7 +34,7 @@ export default async function PostPage({ params }) {
                   [
                     rehypePrettyCode,
                     {
-                      theme: "slack-dark",
+                      theme: "github-dark",
                     },
                   ],
                 ],

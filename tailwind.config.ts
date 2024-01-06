@@ -13,14 +13,19 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.25rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
       fontFamily: {
-        inter: ["var(--font-inter)"],
+        body: ["var(--font-body)"],
+        code: ["var(--font-code)"],
+        heading: ["var(--font-heading)"],
+      },
+      maxWidth: {
+        "3xl": "726px",
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Onest } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "@/styles//globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 
-const inter = Inter({ subsets: ["latin"] });
+const onest = Onest({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-code",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,8 +34,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          inter.className
+          "min-h-screen bg-background antialiased font-body",
+          inter.variable,
+          jetbrains.variable,
+          onest.variable
         )}
       >
         <ThemeProvider
@@ -32,7 +47,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative flex min-h-screen flex-col bg-background">
-            <main className="flex-1"> {children}</main>
+            <main className="flex-1">{children}</main>
           </div>
           <TailwindIndicator />
         </ThemeProvider>
