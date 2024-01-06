@@ -7,7 +7,25 @@ import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
-import { getPlaiceholder } from "plaiceholder";
+
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#333" offset="20%" />
+      <stop stop-color="#222" offset="50%" />
+      <stop stop-color="#333" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#333" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`;
+
+const toBase64 = (str: string) =>
+  typeof window === "undefined"
+    ? Buffer.from(str).toString("base64")
+    : window.btoa(str);
 
 async function getAuthorDetails(authorsList) {
   // If authorsList is empty or not provided, return an empty array
@@ -45,9 +63,6 @@ export default async function PostPage({ params }) {
   const file = await readFile(filename, "utf8");
   const { content, data } = matter(file);
   const authorsInfo = await getAuthorDetails(data.authors);
-  const src = data?.image;
-  const buffer = await readFile(`./public${src}`);
-  const { base64 } = await getPlaiceholder(buffer);
 
   return (
     <main className="container py-6 lg:py-8 max-w-[650px]">
@@ -74,8 +89,6 @@ export default async function PostPage({ params }) {
                 loading="lazy"
                 src={author.avatar}
                 alt={author.name}
-                placeholder="blur"
-                blurDataURL={base64}
                 width={42}
                 height={42}
                 className="rounded-full"
@@ -94,8 +107,12 @@ export default async function PostPage({ params }) {
           alt={data.title}
           width={650}
           height={650}
+          placeholder={`data:image/svg+xml;base64,${toBase64(
+            shimmer(650, 650)
+          )}`}
           className="my-8 rounded-md border bg-zinc-500 transition-colors"
           priority
+          loading="lazy"
         />
       )}
       <div className="prose prose-quoteless prose-neutral dark:prose-invert py-8">
