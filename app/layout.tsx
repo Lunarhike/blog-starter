@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Onest } from "next/font/google";
+import { Familjen_Grotesk } from "next/font/google";
 import { JetBrains_Mono } from "next/font/google";
 import "@/styles//globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { GeistSans } from "geist/font/sans";
 
-const onest = Onest({
+const onest = Familjen_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
 });
@@ -46,7 +47,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-screen flex-col bg-background">
+          <div className="relative flex min-h-screen flex-col">
             <main className="flex-1">{children}</main>
           </div>
           <TailwindIndicator />

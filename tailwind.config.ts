@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
   darkMode: ["class"],
@@ -19,6 +20,13 @@ const config: Config = {
       },
     },
     extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: "650px",
+          },
+        },
+      }),
       fontFamily: {
         body: ["var(--font-body)"],
         code: ["var(--font-code)"],
@@ -83,7 +91,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [typography, require("tailwindcss-animate")],
   future: {
     hoverOnlyWhenSupported: true,
   },

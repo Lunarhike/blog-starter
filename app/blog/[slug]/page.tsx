@@ -12,19 +12,19 @@ export default async function PostPage({ params }) {
   const { content, data } = matter(file);
 
   return (
-    <main className="mx-auto relative py-6 lg:py-12 lg:gap-10 xl:grid max-w-3xl">
+    <main className="mx-auto relative py-6 lg:py-12 lg:gap-10 xl:grid">
       <div className="mx-auto w-full min-w-0">
-        <h1 className="title font-semibold text-3xl tracking-tighter max-w-[650px]">
-          {data.title}
+        <h1 className="title font-medium text-5xl tracking-tight max-w-[720px] font-heading">
+          Hello Boi. <br /> Welcome to Tekken 3 baby.
         </h1>
         <p className="mt-2 text-[13px] text-gray-700 dark:text-gray-300">
-          {new Date(data.date).toLocaleDateString("en", {
+          {new Date(data.publishedAt).toLocaleDateString("en", {
             day: "numeric",
             month: "long",
             year: "numeric",
           })}
         </p>
-        <div className="pt-8">
+        <div className="prose prose-quoteless prose-neutral dark:prose-invert py-8">
           <Mdx
             source={content}
             options={{
