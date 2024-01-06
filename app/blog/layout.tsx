@@ -3,5 +3,7 @@ interface BlogLayoutProps {
 }
 
 export default function DocsLayout({ children }: BlogLayoutProps) {
-  return <div className="container flex justify-center">{children}</div>;
+  return (
+    <div className="flex flex-1 flex-col mx-auto items-center">{children}</div>
+  );
 }

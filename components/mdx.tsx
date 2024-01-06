@@ -36,10 +36,10 @@ const components = {
     <p className={cn("", className)} {...props} />
   ),
   ul: ({ className, ...props }) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={cn("", className)} {...props} />
   ),
   ol: ({ className, ...props }) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("", className)} {...props} />
   ),
   li: ({ className, ...props }) => (
     <li className={cn("mt-2 [&>*]:mt-6", className)} {...props} />
