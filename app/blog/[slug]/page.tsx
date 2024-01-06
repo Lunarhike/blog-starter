@@ -12,7 +12,7 @@ export default async function PostPage({ params }) {
   const { content, data } = matter(file);
 
   return (
-    <main className="mx-auto relative py-6 lg:py-12 lg:gap-10 xl:grid">
+    <main className="container mx-auto relative py-6 lg:py-12 lg:gap-10 xl:grid">
       <div className="mx-auto w-full min-w-0">
         <h1 className="title font-medium text-5xl tracking-tight max-w-[720px] font-heading">
           Hello Boi. <br /> Welcome to Tekken 3 baby.
